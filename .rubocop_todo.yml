@@ -38,13 +38,14 @@ Metrics/BlockLength:
 # Offense count: 4
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
-  Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'app/helpers/application_helper.rb'
-    - 'app/mailers/application_mailer.rb'
-    - 'app/models/application_record.rb'
-    - 'config/application.rb'
+  Enabled: false
+  # Exclude:
+  #   - 'spec/**/*'
+  #   - 'test/**/*'
+  #   - 'app/helpers/application_helper.rb'
+  #   - 'app/mailers/application_mailer.rb'
+  #   - 'app/models/application_record.rb'
+  #   - 'config/application.rb'
 
 # Offense count: 30
 # This cop supports unsafe autocorrection (--autocorrect-all).
