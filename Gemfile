@@ -45,8 +45,10 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
-
 gem "refile-mini_magick"
+
+gem 'bootstrap', '~> 4.5'
+gem 'jquery-rails'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
