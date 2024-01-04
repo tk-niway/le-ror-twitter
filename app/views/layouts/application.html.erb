@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <header>
+      <div><%= link_to "Traveler", root_path, class: "text-white" %></div>
+      <div><%= link_to "投稿", new_post_path, class: "text-white" %></div>
+      <div><%= link_to "投稿一覧", posts_path, class: "text-white" %></div>
+    </header>
     <%= yield %>
   </body>
 </html>
