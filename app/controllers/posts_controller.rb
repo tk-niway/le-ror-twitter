@@ -1,7 +1,7 @@
 # Purpose: Controller for posts.
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).reverse_order
   end
 
   def show
