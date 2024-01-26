@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :users, only:[:index, :show, :edit, :update] do
-    member do
+    member do # idを含むURLを生成する
       get :follows, :followers
     end
     resource :relationships, only: [:create, :destroy]
@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
+    collection do # idを含まないURLを生成する
+      get 'confirm'
+    end
   end
 
   root :to => 'homes#top'
