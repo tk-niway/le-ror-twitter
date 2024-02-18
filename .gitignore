@@ -79,3 +79,6 @@ doc/
 /db/*.sqlite3-journal
 
 .solargraph.yml
+
+/infra/nginx/logs/*
+!/infra/nginx/logs/.keep
