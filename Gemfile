@@ -56,6 +56,8 @@ gem 'jquery-rails'
 
 gem 'enum_help'
 
+gem 'mysql2'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
@@ -76,6 +78,8 @@ group :development do
   gem 'rubocop-rails', require: false
 
   gem 'solargraph'
+
+  gem 'dotenv-rails'
 end
 
 group :test do
