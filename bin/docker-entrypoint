@@ -1,8 +1,20 @@
 #!/bin/bash -e
 
+ruby --version
+bundle --version
+rails --version
+node --version
+yarn --version
+npm --version
+
+echo "Running entrypoint script..."
+
 # If running the rails server then create or migrate existing database
 if [ "${1}" == "./bin/rails" ] && [ "${2}" == "server" ]; then
+  echo "Running database migrations..."
   ./bin/rails db:prepare
 fi
+
+echo "End of entrypoint script."
 
 exec "${@}"

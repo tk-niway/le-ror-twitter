@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  # web:
+  #   image: nginx:1.25-alpine
+  #   container_name: ror_web
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - app
+    
+  app:
+    container_name: ror_app
+    build:
+      dockerfile: ./infra/Dockerfile
+    working_dir: /app
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: mysql2://ror:ror@db/ror
+    volumes:
+      - log:/app/log
+
+  db:
+    image: mysql:8.0-bullseye
+    container_name: ror_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ror
+      MYSQL_USER: ror
+      MYSQL_PASSWORD: ror
+    volumes:
+      - ror_data:/var/lib/mysql
+
+volumes:
+  ror_data:
+    name: ror_data
