@@ -1,13 +1,18 @@
 version: "3.8"
 
 services:
-  # web:
-  #   image: nginx:1.25-alpine
-  #   container_name: ror_web
-  #   ports:
-  #     - "80:80"
-  #   depends_on:
-  #     - app
+  web:
+    image: nginx:1.25-alpine
+    container_name: ror_web
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    volumes:
+      - ./infra/nginx/logs:/var/log/nginx
+      - ./infra/nginx/conf.d:/etc/nginx/conf.d
+      - ./public:/app/public
+      - ./tmp:/app/tmp
     
   app:
     container_name: ror_app
@@ -16,12 +21,13 @@ services:
     working_dir: /app
     depends_on:
       - db
-    ports:
-      - "3000:3000"
     environment:
       DATABASE_URL: mysql2://ror:ror@db/ror
+      SECRET_KEY_BASE: 7e4e431f7c223370c6f2d35d5ddcaa10
     volumes:
-      - log:/app/log
+      - ./log:/app/log
+      - ./public:/app/public
+      - ./tmp:/app/tmp
 
   db:
     image: mysql:8.0-bullseye

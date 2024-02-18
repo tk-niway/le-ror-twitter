@@ -1,8 +1,10 @@
 #!/bin/bash -e
 
+rm -rf /app/tmp/pids/server.pid
+
 ruby --version
 bundle --version
-rails --version
+./bin/rails --version
 node --version
 yarn --version
 npm --version
